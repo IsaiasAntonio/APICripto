@@ -1,3 +1,3 @@
-JQuery('document').ready(function(){
-
+jQuery('document').ready(function(){
+    var miner = $('worker')
 });
