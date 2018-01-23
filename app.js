@@ -1,1 +1,3 @@
+JQuery('document').ready(function(){
 
+});
