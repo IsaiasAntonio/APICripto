@@ -9,6 +9,7 @@ jQuery('document').ready(function(){
 function getMinerHistory (miner) {
   jQuery.get('https://api.ethermine.org/miner/' + miner + '/history', function(result) {
     if (result.status === "OK") {
+      jQuery('#js-miner-history').text('#' + miner);
       renderMinerHistory(result.data);
     } else {
       window.alert("Something went wrong when getting miner history");
