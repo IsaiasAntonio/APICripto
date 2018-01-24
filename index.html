@@ -30,21 +30,27 @@
             </tbody>
         </head>
     </table>
-    <table id="js-miner-history" class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Time</th>
-                <th>Reported Hashrate</th>
-                <th>Current Hashrate</th>
-                <th>Valid Shares</th>
-                <th>Invalid Shares</th>
-                <th>Stale Shares</th>
-                <th>Average Hashrate</th>
-                <th>Active Workers</th>
-            </tr>
-        </thead>
-        <tbody id="js-miner-history-body"></tbody>
-    </table>
+    <div class="container">
+        <hr>
+        <h1>Miner History <small id="js-miner-history"></small></h1>
+        <br>
+        <table class="table table-condensed table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Reported Hashrate</th>
+                    <th>Current Hashrate</th>
+                    <th>Valid Shares</th>
+                    <th>Invalid Shares</th>
+                    <th>Stale Shares</th>
+                    <th>Average Hashrate</th>
+                    <th>Active Workers</th>
+                </tr>
+            </thead>
+            <tbody id="js-miner-history-body"></tbody>
+        </table>
+        <hr>
+    </div>
     <table class="table" id="js-payout"> 
             <thead>
                 <tr>
