@@ -7,47 +7,22 @@ jQuery('document').ready(function(){
 });
 
 function getMinerHistory (miner) {
-  jQuery.get('https://api.ethermine.org/miner/' + miner + '/history', function(result) {
-    if (result.status === "OK") {
-      jQuery('#js-miner-history').text('#' + miner);
-      renderMinerHistory(result.data);
+  getApi('https://api.ethermine.org/miner/:miner/history', { miner: miner }, function(data, error) {
+    if (error) {
+      alert(error);
     } else {
-      window.alert("Something went wrong when getting miner history");
+      jQuery('#js-miner-history').text(miner);
+      renderTable('js-miner-history-table', {
+        time: 'Time',
+        reportedHashrate: 'Reported Hashrate',
+        currentHashrate: 'Current Hashrate',
+        validShares: 'Valid Shares',
+        invalidShares: 'Invalid Shares',
+        staleShares: 'Stale Shares',
+        averageHashrate: 'Average Hashrate',
+        activeWorkers: 'Active Workers'
+      }, data);
     }
-  });
-}
-
-function getPayout(miner)
-{
-    $.get( "https://api.ethermine.org/miner/d7049af37A18BEDC9A85FE7b378f6085F17050C6/payouts", function( data ) {
-        
-        for(var i in data.data) {
-            $( "#content" ).append("<tr>")
-            $( "#content" ).append("<th>" + data.data[i].paidOn+ "</th>")
-            $( "#content" ).append("<th>" + data.data[i].start+ "</th>")
-            $( "#content" ).append("<th>" + data.data[i].end+ "</th>")
-            $( "#content" ).append("<th>" + data.data[i].amount+ "</th>")
-            $( "#content" ).append("<th>" + data.data[i].txHash+ "</th>")
-            $( "#content" ).append("</tr>")
-        }
-        alert( "Load was performed." );
-      });
-}
-
-function renderMinerHistory (minerHistory) {
-  let historyBody = jQuery('#js-miner-history-body');
-  historyBody.empty();
-  minerHistory.forEach(function(element) {
-    let row = jQuery('<tr></tr>');
-    row.append('<td>' + element.time + '</td>');
-    row.append('<td>' + element.reportedHashrate + '</td>');
-    row.append('<td>' + element.currentHashrate + '</td>');
-    row.append('<td>' + element.validShares + '</td>');
-    row.append('<td>' + element.invalidShares + '</td>');
-    row.append('<td>' + element.staleShares + '</td>');
-    row.append('<td>' + element.averageHashrate + '</td>');
-    row.append('<td>' + element.activeWorkers + '</td>');
-    historyBody.append(row);
   });
 }
 
