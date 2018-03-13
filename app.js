@@ -28,7 +28,7 @@ function getMinerHistory (miner) {
 
 function getPayout(miner)
 {
-    $.get( "https://api.ethermine.org/miner/d7049af37A18BEDC9A85FE7b378f6085F17050C6/payouts", function( data ) {
+    $.get( "https://api.ethermine.org/miner/" + miner + "d7049af37A18BEDC9A85FE7b378f6085F17050C6/payouts", function( data ) {
         
         for(var i in data.data) {
             $( "#content" ).append("<tr>")
